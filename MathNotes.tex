@@ -14,6 +14,10 @@
 \usepackage{import}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\renewcommand{\baselinestretch}{1.15}
+
+\usepackage{tikz}
+\usetikzlibrary{cd, positioning}
 
 \usepackage{notation/mori-math}
 \usepackage{notation/mori-ref}
@@ -25,14 +29,16 @@
 \doctitle{Study Notes to Mathematics}
 \docauthor{Kim Jae Won}
 \docdate{\today}
-\docversion{0.0.0}
+\docversion{1.0.0}
 % \docimagepath{images/SNU.png}
 
 \begin{document}
     \makecoverpage
     \maketitlepage
 
-    % \frontmatter
+    \frontmatter
+    \pagestyle{front}
+    \import{txt}{Preface}
     % \pagestyle{front}
     % \setchapter*{Test Preface} \label{chap:preface}
     % % 국방상 또는 국민경제상 긴절한 필요로 인하여 법률이 정하는 경우를 제외하고는, 사영기업을 국유 또는 공유로 이전하거나 그 경영을 통제 또는 관리할 수 없다. 이 헌법에 의한 최초의 대통령의 임기는 이 헌법시행일로부터 개시한다. 교육의 자주성·전문성·정치적 중립성 및 대학의 자율성은 법률이 정하는 바에 의하여 보장된다. 국가안전보장에 관련되는 대외정책·군사정책과 국내정책의 수립에 관하여 국무회의의 심의에 앞서 대통령의 자문에 응하기 위하여 국가안전보장회의를 둔다. 국회는 선전포고, 국군의 외국에의 파견 또는 외국군대의 대한민국 영역안에서의 주류에 대한 동의권을 가진다.
