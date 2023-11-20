@@ -1,0 +1,37 @@
+\newcommand\phrase[1]{%
+    [\,#1\,]}
+
+\newlist{alist}{enumerate}{2}
+\setlist[alist,1]{
+    label=(\alph{alisti})
+}
+\setlist[alist,2]{
+    label=(\alph{alisti}-\roman{alistii})
+}
+
+\newlist{nlist}{enumerate}{2}
+\setlist[nlist,1]{
+    label=(\arabic{nlisti})
+    }
+\setlist[nlist,2]{
+    label=(\arabic{nlisti}-\roman{nlistii})
+}
+
+% custom lists for axioms
+\newenvironment*{axioms}[1][A]{%
+    \begin{enumerate}[
+        label=(#1-\arabic*),
+        labelindent = \parindent,
+        leftmargin = *
+    ]
+}{
+    \end{enumerate}
+}
+
+\let\Iff\Leftrightarrow
+\let\iff\leftrightarrow
+
+\let\iso\cong
+
+\newcommand{\btw}{\mathrel{\ast}}
+\newcommand{\pprod}{\mathbin{\ast}}

@@ -1,0 +1,5 @@
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qtop.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qmain.[ ] [.][][].\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Q.\\E$"}
+{"rule":"WHITESPACE_RULE","sentence":"^\\Qaxioms[1][A]\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QStudy Notes to Mathematics Kim Jae Won 1.0.0\\E$"}
