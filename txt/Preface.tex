@@ -1,0 +1,169 @@
+\setchapter*{Preface}
+
+This is a collection of personal study notes
+which are taken during class, private studying, etc.
+An ideal math textbook would consist of various concrete examples
+with definitions and theorems which conveniently capture
+the nature of these examples.
+In this sense, this note is far from being ideal;
+descriptions might not be neatly organized
+and definitions might be wrong at times.
+Noticing those imperfections and improving them on a regular basis
+would be a motivating challenge for studying.
+
+Exercises would mainly come from English, Korean and Japanese books,
+since those are the languages that I comprehend.
+For citations and quotes here and there,
+references from other languages may also be included.
+See the bibliography for the full list of references.
+
+One would ideally partition books into classical subjects such as
+analysis, linear algebra, complex analysis, topology and so on.
+The issue I had with this approach is that
+some topics from textbooks are repeated over and over,
+while other topics are glossed away despite their complexity.
+Needless to say,
+topics logically cannot use ideas from their succeeding topics;
+rather, results from mathematical pedagogy strongly suggests that
+previous topics should be motivating ideas
+for the abstraction that follows.
+
+As a result, I have grouped some topics by the following list.
+These are basically almost everything that I have learned.
+Obviously, the order or content are subject to change;
+however, perhaps the main lines would remain quite unchanged.
+
+\begin{itemize}
+    \item \textdef{Logic and Set Theory}
+    \begin{itemize}
+        \item Logic, Set Theory
+        \item Construction of Numbers, Axiomatic Geometry
+    \end{itemize}
+    \item \textdef{Basic Algebra}
+    \begin{itemize}
+        \item Algebraic Structures, Polynomial Algebra
+        \item Matrix Algebra, Linear Algebra
+        \item Tensors
+    \end{itemize}
+    \item \textdef{Point-set Topology}
+    \begin{itemize}
+        \item Topological Spaces
+        \item Properties of Spaces
+        \item Construction of Spaces
+        \item Separation Axioms
+    \end{itemize}
+    \item \textdef{Functions of a Real Variable}
+    \begin{itemize}
+        \item Metric Spaces
+        \item Limits and Continuity
+        \item Function Spaces
+        \item Derivatives and Analytic Functions
+    \end{itemize}
+    \item \textdef{Measure Theory and Calculus}
+    \begin{itemize}
+        \item Riemann-Stieltjes Integration
+        \item Measure Theory
+        \item Multivariable Calculus
+        \item Integration of Differential Forms
+    \end{itemize}
+    \item \textdef{Functions of a Complex Variable}
+    \begin{itemize}
+        \item Holomorphic and Meromorphic Functions
+        \item Conformal Mappings
+        \item Elliptic Functions and Modular Forms
+    \end{itemize}
+    \item \textdef{Algebra}
+    \begin{itemize}
+        \item Category Theory
+        \item Group Theory
+        \item Field Theory
+        \item Galois Theory
+    \end{itemize}
+    \item \textdef{Geometry on Manifolds}
+    \begin{itemize}
+        \item Structure of Manifolds
+        \item Bundles and Fibered Manifolds
+        \item Riemannian Manifolds
+        \item Lie Groups and Lie Algebras
+    \end{itemize}
+    \item \textdef{Algebraic Topology}
+    \begin{itemize}
+        \item Homotopy and Covering Spaces
+        \item Homology and Cohomology
+    \end{itemize}
+    \item \textdef{Topological Vector Spaces}
+    \begin{itemize}
+        \item Normed Spaces and Banach Spaces
+        \item Inner Product Spaces and Hilbert Spaces
+        \item \(C^\ast\)-algebra
+        \item Distribution Theory
+    \end{itemize}
+    \item \textdef{Measure Theory and Random Variables}
+    \begin{itemize}
+        \item Probability as Measures
+        \item Random Variables and Correlation
+        \item Probability Distribution, Central Limit Theorem
+    \end{itemize}
+    \item \textdef{Differential Equations}
+    \begin{itemize}
+        \item Ordinary, Partial, Stochastic Differential Equations
+        \item Calculus of Variations
+        \item Numeric Approaches to Differential Equations
+    \end{itemize}
+\end{itemize}
+
+A diagram showing interdependence (in terms of logic and ideas)
+is drawn below.
+The overall diagram is messy,
+but clearly indicates subjects of great importance.
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \node (set) {Logic and Set Theory};
+        \node (bsc) [below=1cm of set]{Basic Algebra};
+        \node (tpo) [right=1cm of bsc]{Point-set Topology};
+        \node (anl) [right=1cm of tpo]{Functions of a Real Variable};
+        \node (int) [below=1cm of anl]{Measure Theory and Calculus};
+        \node (cmp) [below=0.7cm of int]{Functions of a Complex Variable};
+        \node (alg) [below=1cm of bsc]{Algebra};
+        \node (mfd) [below=3.5cm of tpo]{Geometry on Manifolds};
+        \node (atp) [below=1cm of alg]{Algebraic Topology};
+        \node (tvs) [below=1.3cm of cmp]{Topological Vector Spaces};
+        \node (rnd) [below=1cm of mfd]
+            {Measure Theory and Random Variables};
+        \node (deq) [below=2cm of tvs]{Differential Equations};
+        
+        \draw[->] (set.south) -- (bsc.north);
+        \draw[->] (set.south) -- (tpo.north);
+        \draw[->] (set.south) -- (anl.north);
+        \draw[->] (tpo.east) -- (anl.west);
+        \draw[->] (bsc.east) -- (int.west);
+        \draw[->] (tpo.south east) -- (int.north west);
+        \draw[->] (anl.south) -- (int.north);
+        \draw[->] (anl.south east)
+            .. controls ++ (1.2cm,-2.5cm) and ++ (0,7mm)
+            .. (cmp.north);
+        \draw[->] (bsc.south) -- (alg.north);
+        \draw[->] (tpo.south) -- (mfd.north);
+        \draw[->] (cmp.south) -- (mfd.east);
+        \draw[->] (int.south west) -- (mfd.north east);
+        \draw[->] (alg.south east)
+            .. controls ++ (2cm,-1cm) and ++ (-7mm,7mm)
+            .. (mfd.north west);
+        \draw[->] (tpo.south west) -- (atp.north east);
+        \draw[->] (alg.south) -- (atp.north);
+        \draw[->] (bsc.south east) -- (tvs.north);
+        \draw[->] (alg.east)
+            .. controls ++ (3cm,0) and ++ (-1cm,1cm)
+            .. (tvs.north west);
+        \draw[->] (int.south east)
+            .. controls ++ (7mm,-7mm) and ++ (7mm,1cm)
+            .. (tvs.north east);
+        \draw[->] (mfd.south) -- (rnd.north);
+        \draw[->] (int.south)
+            .. controls ++ (-3cm,-1cm) and ++ (-2cm,2cm)
+            .. (rnd.north west);
+        \draw[->] (tvs.south) -- (deq.north);
+        \draw[->] (rnd.south) -- (deq.north west);
+    \end{tikzpicture}
+\end{figure}
