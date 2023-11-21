@@ -121,7 +121,14 @@ one of the main paths which modern mathematics have emerged;
 although there are some requirements for the theory,
 the results are of absolute importance.
 The same comment also holds for manifolds.
-\begin{figure}[h!]
+
+On the other hand,
+basic algebra and point-set topology are of indispensable importance;
+without them modern mathematics would not have been this concrete.
+This is clearly represented by the number of arrows from the two topics.
+Whilst only requiring basic logic and set theory,
+they are truly the building blocks of mathematics.
+\begin{figure}
     \centering
     \begin{tikzpicture}
         \node (set) {Logic and Set Theory};
@@ -145,32 +152,37 @@ The same comment also holds for manifolds.
         \draw[->] (bsc.east) -- (int.west);
         \draw[->] (tpo.south east) -- (int.north west);
         \draw[->] (anl.south) -- (int.north);
-        \draw[->] (anl.south east)
+        \draw[->, dashed] (anl.south east)
             .. controls ++ (1.2cm,-2.5cm) and ++ (0,7mm)
             .. (cmp.north);
         \draw[->] (bsc.south) -- (alg.north);
         \draw[->] (tpo.south) -- (mfd.north);
-        \draw[->] (cmp.south) -- (mfd.east);
+        \draw[->, dashed] (cmp.south) -- (mfd.east);
         \draw[->] (int.south west) -- (mfd.north east);
         \draw[->] (alg.south east)
             .. controls ++ (2cm,-1cm) and ++ (-7mm,7mm)
             .. (mfd.north west);
         \draw[->] (tpo.south west) -- (atp.north east);
         \draw[->] (alg.south) -- (atp.north);
+        \draw[->, dashed] (cmp.west) -- (atp.east);
         \draw[->] (bsc.south east) -- (tvs.north);
         \draw[->] (alg.east)
-            .. controls ++ (3cm,0) and ++ (-1cm,1cm)
+            .. controls ++ (3cm,0) and ++ (-7mm,1.5cm)
             .. (tvs.north west);
         \draw[->] (int.south east)
             .. controls ++ (7mm,-7mm) and ++ (7mm,1cm)
             .. (tvs.north east);
-        \draw[->] (mfd.south) -- (rnd.north);
+        \draw[->, dashed] (mfd.south) -- (rnd.north);
         \draw[->] (int.south)
             .. controls ++ (-3cm,-1cm) and ++ (-2cm,2cm)
             .. (rnd.north west);
         \draw[->] (tvs.south) -- (deq.north);
-        \draw[->] (rnd.south) -- (deq.north west);
+        \draw[->] (rnd.south)
+            .. controls ++ (0,-1cm) and ++ (-1cm,0)
+            .. (deq.west);
     \end{tikzpicture}
-    \caption{An overall map of topics in these study notes}
+    \caption{An overall map of topics in these study notes.
+    Real arrows denote logical dependence,
+    while dashed ones suggest ideas for the topic.}
     \label{fig:overallmap}
 \end{figure}
