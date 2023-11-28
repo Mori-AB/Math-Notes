@@ -1,2 +1,138 @@
 \setsection{Tensor Notations}
 \label{sec:tensornot}
+
+We have seen from \cref{thm:blnrep} that
+given \(k\)-vector spaces \(V_1\) and \(V_2\)
+with \(\dim V_1=n\) and \(\dim V_2=m\),
+the vector spaces \(\Lsp(V_1,V_2;k)\) and \(\Msp_{m,n}(k)\)
+are isomorphic.
+In other words, bilinear forms can be represented as matrices.
+We first prove a similar result for multilinear maps.
+
+\begin{proposition}
+    \label{prop:n-lndim}
+    Let \(V_1,\dots,V_m\) be \(k\)-vector spaces
+    with respective dimensions \(n_1,\dots,n_m\).
+    Then the space \(\Lsp(V_1,\dots,V_m;k)\) of \(m\)-linear maps
+    is a \(k\)-vector space of dimension \(n_1\times\dots\times n_m\).
+\end{proposition}
+\begin{myproof}
+    Let \(\lambda\in\Lsp(V_1,\dots,V_m;k)\) be an \(m\)-linear map,
+    and fix respective bases \(\mathfrak B_\alpha
+    =\indexset*{v_{i_\alpha}}{i_\alpha=1}{n_\alpha}\)
+    for \(V_\alpha\) for each \(\alpha=1,\dots,m\).
+    Then since any vector \(v\in V_1\times\dots\times V_m\)
+    is in the form
+    \[
+        v
+        =\trp{\biggl(\sum_{i_1=1}^{n_1}c_{i_1}v_{i_1},
+            \dots,
+            \sum_{i_m=1}^{n_m}c_{i_m}v_{i_m}\biggr)},
+    \]
+    its value under \(\lambda\) is calculated as
+    \[
+        \lambda(v)
+        =\lambda\biggl(\sum_{i_1=1}^{n_1}c_{i_1}v_{i_1},
+            \dots,
+            \sum_{i_m=1}^{n_m}c_{i_m}v_{i_m}\biggr)
+        =\sum_{i_1=1}^{n_1}\cdots\sum_{i_m=1}^{n_m}
+            c_{i_1}\cdots c_{i_m}\lambda(v_{i_1},\dots,v_{i_m}).
+    \]
+    In other words,
+    the \(m\)-linear map \(\lambda\) is completely determined by
+    its value at the tuples of basis elements of \(V_\alpha\).
+    Since there are \(n_1\times\dots\times n_m\) such tuples,
+    we conclude that \(\Lsp(V_1,\dots,V_m;k)\) is a vector space
+    of dimension \(n_1\times\dots\times n_m\).
+\end{myproof}
+
+Compare this result with \cref{thm:blnrep}.
+What is missing is that
+while bilinear forms are characterized by their corresponding matrices,
+we do not have such a notion for multilinear maps.
+Also, the similarity of the statements in \cref{thm:blnrep,prop:n-lndim}
+leads to an intuitive guess that
+we can simply use induction on \(m\) by repeating \cref{thm:blnrep}.
+Why is the proof above so ``unnecessarily'' complicated?
+For example, one could attempt proving \cref{prop:n-lndim} as follows:
+
+\begin{misc}[Disproof of \cref{prop:n-lndim}?]
+    The case where \(m=1\) holds because
+    \(\Lsp(V_1;k)\) is precisely the dual space \(V_1^\ast\) of \(V_1\),
+    which is isomorphic to \(V_1\) since \(V_1\) is finite-dimensional.
+    The case \(m=2\) is proved in \cref{thm:blnrep}.
+
+    Now suppose that \(m=3\).
+    Then given \(k\)-vector spaces \(V_1\), \(V_2\) and \(V_3\),
+    any \(\lambda\in\Lsp(V_1,V_2,V_3;k)\) is of the form
+    \[
+        \lambda:V_1\times V_2\times V_3
+            =V_1\times(V_2\times V_3)\to k;
+    \]
+    thus \(\Lsp(V_1,V_2,V_3;k)=\Lsp(V_1,V_2\times V_3;k)\)
+    and by \cref{thm:blnrep} we obtain
+    \[
+        \dim\Lsp(V_1,V_2,V_3;k)
+        =\dim V_1\times\dim\Lsp(V_2\times V_3;k)
+        =\dim V_1\times(\dim V_2+\dim V_3).
+        \qedhere
+    \]
+\end{misc}
+
+This attempt is flawed because
+the identification \(V_1\times V_2\times V_3=V_1\times(V_2\times V_3)\)
+of vector spaces is not compatible with
+the multilinear nature of \(\lambda\).
+In particular, given \(v_1,v_2\in V\) and \(w_1,w_2\in W\),
+\(\lambda(v_1+v_2,w_1+w_2)\) splits into four terms as
+\[
+    \lambda(v_1+v_2,w_1+w_2)
+    =\lambda(v_1,w_1)+\lambda(v_1,w_2)+\lambda(v_2,w_1)+\lambda(v_2,w_2)
+\]
+whereas the vector \((v_1+v_2,w_1+w_2)\) splits into two terms such as
+\[
+    (v_1+v_2,w_1+w_2)
+    =(v_1,w_1)+(v_2,w_2)
+    =(v_1,w_2)+(v_2,w_1)
+\]
+in the product space \(V\times W\).
+This phenomenon suggests that
+we need a new method of constructing vector spaces out of existing ones,
+Noting the above identification,
+it would be great if the new space still resembles the product space;
+we just want to mix the multilinear property in the new one.
+
+\begin{definition}[Tensor Products]
+    \label{def:tensorvs}
+    Let \(V_1,\dots,V_m\) be \(k\)-vector spaces.
+    Consider the vector space \(\mathcal F\) of functions
+    \(V_1\times\dots\times V_m\to k\)
+    with only finite nonzero values.
+    Note that
+    \(V_1\times\dots\times V_m\) can be identified as
+    a subset of \(\mathcal F\);
+    namely, the set of functions with value \(1\)
+    at an element of \(V_1\times\dots\times V_m\) and zero otherwise.
+    Then the \define[vector space!tensor product]{tensor product}
+    of \(V_1,\dots,V_m\)
+    is the quotient space of \(\mathcal F\)
+    obtained by identifying elements
+    \begin{gather*}
+        (v_1+v_1',v_2,\dots,v_m)
+        =(v_1,v_2,\dots,v_m)+(v_1',v_2,\dots,v_m), \\
+        \vdots \\
+        (v_1,\dots,v_{m-1},v_m+v_m')
+        =(v_1,\dots,v_{m-1},v_m)+(v_1,\dots,v_{m-1},v_m'), \\
+        c(v_1,\dots,v_m)
+        =(cv_1,c_2,\dots,v_m)
+        =\cdots
+        =(v_1,\dots,v_{m-1},cv_m),
+    \end{gather*}
+    and is denoted by \(\denote{V_1\otimes\dots\otimes V_m}\).
+    The elements of \(V_1\otimes\dots\otimes V_m\) are denoted by
+    \(v_1\otimes\dots\otimes v_m\),
+    instead of tuple notation \((v_1,\dots,v_m)\).
+\end{definition}
+
+The definition may seem abstract at first glance;
+but is somewhat natural if we observe it carefully.
