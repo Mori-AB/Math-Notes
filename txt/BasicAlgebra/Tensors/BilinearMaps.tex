@@ -1,0 +1,247 @@
+\setsection{Bilinear Maps}
+\label{sec:bilinear}
+
+\begin{example}
+    \label{exm:bilinear}
+    Let \(V\) be a vector space over a field \(k\),
+    and \(V^*\) be its dual space.
+    Then the map \(\epsilon:V\times V^*\to k\) defined by
+    \((v,f)\mapsto f(v)\)
+    is linear in both coordinates.
+    In other words, given
+    \(v,v_1,v_2\in V\), \(f,f_1,f_2\in V^*\) and \(a\in k\),
+    the relations
+    \[
+        \epsilon(av_1+v_2,f)
+        =a\epsilon(v_1,f)+\epsilon(v_2,f),
+        \qquad
+        \epsilon(v,af_1+f_2)
+        =a\epsilon(v,f_1)+\epsilon(v,f_2)
+    \]
+    hold.
+\end{example}
+\begin{example}
+    \label{exm:bilinear2}
+    Let \(V=k^n\) for a field \(k\),
+    and consider the map \(i:V\times V\to k\) given by
+    \[
+        (v,w)\mapsto\sum_{k=1}^nv_kw_k,
+    \]
+    where \(v_k\) and \(w_k\) are the coordinates of \(v\) and \(w\).
+    This map is also linear in both coordinates; indeed,
+    \[
+        i(au+v,w)
+        =\sum_{k=1}^{n}(au+v)_kw_k
+        =a\sum_{k=1}^{n}u_kw_k+\sum_{k=1}^{n}v_kw_k
+        =ai(u,w)+i(v,w)
+    \]
+    indicates that \(i\) is linear in the first coordinate;
+    the case for the second coordinate is similar.
+\end{example}
+
+The above examples demonstrate a common example:
+given a field \(k\), let \(V\) and \(W\) be
+(not necessarily distinct) \(k\)-vector spaces,
+and consider a map \(\lambda:V\times W\to k\).
+We have observed that
+\(V\times W\) is itself a vector space;
+but at the moment, \(\lambda\) is not a linear map from \(V\times W\).
+Instead, \(\lambda\) is linear only if
+either \(v\in V\) or \(w\in W\) of the input is fixed.
+Since \(\lambda\) is not linear,
+our basic knowledge of linear algebra may not be suitable
+to manipulate these kinds of objects.
+
+\begin{definition}[Bilinear Maps and Forms]
+    \label{def:bilinear}
+    Suppose that \(V\), \(W\) and \(X\) are \(k\)-vector spaces,
+    and \(\lambda:V\times W\to X\) be a map.
+    If \(\lambda\) is linear on each of its coordinates, i.e.
+    \begin{axioms}[BL]
+        \item For any \(w\in W\),
+        the map \(V\to k\) given by \(v\mapsto\lambda(v,w)\)
+        is a linear map of \(V\);
+        \item For any \(v\in V\),
+        the map \(W\to k\) given by \(w\mapsto\lambda(v,w)\)
+        is a linear map of \(W\),
+    \end{axioms}
+    then \(\lambda\) is called
+    a \define[bilinear map]{\(k\)-bilinear map} of \(V\) and \(W\).
+    In particular, if \(V=W\) and \(X=k\),
+    then \(\lambda\) is called
+    a \define[bilinear form]{\(k\)-bilinear form} on \(V\).
+\end{definition}
+
+The reason why we set the codomain of \(\lambda\)
+to be another \(k\)-vector space instead of \(k\)
+as in the previous examples
+is illustrated in the next example.
+
+\begin{example}
+    \label{exm:bilinear3}
+    Consider \(V=W=X=\Rmath^3\).
+    Then the \textdef{cross product} in \(\Rmath^3\) defined by
+    \[
+        \trp*{a_1,a_2,a_3}\times\trp*{b_1,b_2,b_3}
+        =\trp*{a_2b_3-a_3b_2,a_3b_1-a_1b_3,a_1b_2-a_2b_1}
+    \]
+    is a bilinear map.
+    Indeed, taking the cross product of
+    \(\trp*{ca_1+a_1',ca_2+a_2',ca_3+a_3'}\) and \(\trp*{b_1,b_2,b_3}\)
+    we obtain
+    \begin{align*}
+        &\trp*{ca_1+a_1',ca_2+a_2',ca_3+a_3'}\times\trp*{b_1,b_2,b_3} \\
+        ={}&\trp*{(ca_2+a_2')b_3-(ca_3+a_3')b_2,
+            (ca_3+a_3')b_1-(ca_1+a_1')b_3,
+            (ca_1+a_1')b_2-(ca_2+a_2')b_1} \\
+        ={}&\trp*{ca_2b_3-ca_3b_2,ca_3b_1-ca_1b_3,ca_1b_2-ca_2b_1}
+            +\trp*{a_2'b_3-a_3'b_2,a_3'b_1-a_1'b_3,a_1'b_2-a_2'b_1} \\
+        ={}&c\trp*{a_1,a_2,a_3}\times\trp*{b_1,b_2,b_3}
+            +\trp*{a_1',a_2',a_3'}\times\trp*{b_1,b_2,b_3}
+    \end{align*}
+    by direct computation.
+\end{example}
+
+As for the case with linear maps,
+the collection of bilinear forms is also a vector space.
+
+\begin{observation}
+    \label{obv:blnvsp}
+    Given \(k\)-vector spaces \(V\), \(W\) and \(X\),
+    let \(\denote{\Lsp(V,W;X)}\) be
+    the set of bilinear maps of \(V\) and \(W\) to \(X\).
+    Then \(\Lsp(V,W;X)\) is a vector space under the operations
+    \[
+        (\lambda+\mu)(v,w)
+        =\lambda(v,w)+\mu(v,w),
+        \qquad
+        (c\lambda)(v,w)
+        =c\lambda(v,w),
+    \]
+    where \(v\in V\), \(w\in W\) and \(c\in k\).
+\end{observation}
+\begin{myproof}
+    Let \(\lambda,\mu:V\times W\to X\) be bilinear forms,
+    and \(c\in k\).
+    We need to prove that
+    \(\lambda+\mu\) and \(c\lambda\) are still bilinear forms.
+    This follows from simple calculations,
+    since for any vectors \(v_1,v_2\in V\), \(w\in W\)
+    and \(d\in k\) we have
+    \begin{align*}
+        (\lambda+\mu)(cv_1+v_2,w)
+        &=\lambda(cv_1+v_2,w)+\mu(cv_1+v_2,w) \\
+        &=c\lambda(v_1,w)+\lambda(v_2,w)+c\mu(v_1,w)+\mu(v_2,w) \\
+        &=c(\lambda+\mu)(v_1,w)+(\lambda+\mu)(v_2,w),
+    \end{align*}
+    and a similar result holds for the second coordinate.
+\end{myproof}
+
+In the case of finite dimensional \(k\)-vector spaces \(V\) and \(W\),
+there is a simple way of constructing a bilinear map.
+
+\begin{observation}
+    \label{obv:blnmat}
+    Let \(V\) and \(W\) be \(k\)-vector spaces
+    with \(\dim V=n\) and \(\dim W=m\),
+    and let \(\mathfrak B\) and \(\mathfrak C\) be respective bases
+    of \(V\) and \(W\).
+    Then given any matrix \(B\in\Msp_{m,n}(k)\),
+    the map \(\lambda:V\times W\to k\) given by
+    \[
+        (v,w)\mapsto\trp*{\coord{w}{\mathfrak C}}B\coord{v}{\mathfrak B}
+    \]
+    is a bilinear map of \(V\) and \(W\).
+\end{observation}
+\begin{myproof}
+    This follows from the fact that
+    transposition and the coordinate maps
+    \(v\mapsto\coord{v}{\mathfrak B}\),
+    \(w\mapsto\coord{w}{\mathfrak C}\) are linear,
+    and distribution holds for matrix operations.
+    In other words,
+    given any \(v_1,v_2\in V\), \(w\in W\) and \(c\in k\) we have
+    \begin{gather*}
+        \lambda(v_1+w_2,w)
+        =\trp*{\coord{w}{\mathfrak C}}B\coord{v_1+v_2}{\mathfrak B}
+        =\trp*{\coord{w}{\mathfrak C}}B\coord{v_1}{\mathfrak B}
+            +\trp*{\coord{w}{\mathfrak C}}B\coord{v_2}{\mathfrak B}
+        =\lambda(v_1,w)+\lambda(v_2,w), \\
+        \lambda(cv_1,w)
+        =\trp*{\coord{w}{\mathfrak C}}B\coord{cv_1}{\mathfrak B}
+        =c\trp*{\coord{w}{\mathfrak C}}B\coord{v_1}{\mathfrak B}
+        =c\lambda(v_1,w)
+    \end{gather*}
+    and a similar result holds for the second coordinate.
+\end{myproof}
+
+It seems that \cref{obv:blnmat} provides a nice method
+to construct some bilinear maps to the base field \(k\).
+A natural question arises:
+are these the only bilinear maps to \(k\)?
+
+\begin{theorem}
+    \label{thm:blnrep}
+    Let \(V\) and \(W\) be \(k\)-vector spaces
+    with \(\dim V=n\) and \(\dim W=m\),
+    and let \(\mathfrak B\) and \(\mathfrak C\) be respective bases
+    of \(V\) and \(W\).
+    Then for any bilinear map \(\lambda\in\Lsp(V,W;k)\),
+    there uniquely exists a matrix \(B\in\Msp_{m,n}(k)\) such that
+    \[
+        \lambda(v,w)
+        =\trp*{\coord{w}{\mathfrak C}}B\coord{v}{\mathfrak B}
+    \]
+    for all \(v\in V\) and \(w\in W\).
+    Moreover,
+    \(\Lsp(V,W;k)\) and \(\Msp_{m,n}(k)\) are isomorphic vector spaces.
+\end{theorem}
+\begin{sketch}
+    Recall that
+    linear maps are completely determined by their values
+    at the basis elements.
+    Since \(\lambda\) is linear on both of its variables,
+    we can apply a similar argument.
+\end{sketch}
+\begin{myproof}
+    Denote the elements of the given bases by
+    \(\mathfrak B=\indexset*{v_j}{j=1}{n}\)
+    and \(\mathfrak C=\indexset*{w_i}{i=1}{m}\).
+    
+    Now define \(b_{ij}=\lambda(v_j,w_i)\)
+    for each \(i=1,\dots,m\) and \(j=1,\dots,n\);
+    we claim that \(B=(b_{ij})\in\Msp_{m,n}(k)\) is the desired matrix.
+    Verification is straightforward,
+    taking \(v=\sum a_jv_j\) and \(w=\sum c_iw_i\) we obtain
+    \begin{align*}
+        \lambda(v,w)
+        =\sum_{j=1}^{n}\sum_{i=1}^{m}a_jc_i\lambda(v_j,w_i)
+        =\sum_{i=1}^{m}c_i\sum_{j=1}^{n}b_{ij}a_j
+        =\sum_{i=1}^{m}c_i\row*{B\coord{v}{\mathfrak B}}{i}
+        =\trp*{\coord{w}{\mathfrak C}}B\coord{v}{\mathfrak B},
+    \end{align*}
+    since \(\coord{v}{\mathfrak B}=\trp*{a_1,\dots,a_n}\)
+    and \(\coord{w}{\mathfrak C}=\trp*{c_1,\dots,c_m}\).
+    Uniqueness follows from our construction;
+    since the \((i,j)\)-component of \(B\)
+    \emph{must} be \(\lambda(v_j,w_i)\).
+
+    To prove the second claim, it suffices to show that
+    our construction preserves addition and scalar multiplication.
+    This immediately follows from the distribution law of matrices.
+\end{myproof}
+\begin{remark}
+    \label{rmk:blnrep}
+    The above theorem tells us that
+    \(\Lsp(V,W;k)\) and \(\Msp_{m,n}(k)\)
+    are isomorphic vector spaces;
+    thus the dimension of \(\Lsp(V,W;k)\) is precisely \(nm\),
+    the product of dimensions of \(V\) and \(W\).
+    However, note that the construction of \(B\) depends on
+    the choice of bases \(\mathfrak B\) and \(\mathfrak C\).
+    Hence, it is dangerous to say that
+    \(\Lsp(V,W;k)\) and \(\Msp_{m,n}(k)\) are
+    \emph{naturally} isomorphic vector spaces
+    as if \(V\iso V^{\dast}\) for
+    a finite-dimensional vector space \(V\).
+\end{remark}
