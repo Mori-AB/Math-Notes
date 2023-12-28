@@ -1,0 +1,160 @@
+\setsection{The Definition of a Norm}
+\label{sec:norm}
+
+\begin{convention}
+    \label{cnv:tvsfields}
+    We focus on vector spaces over \(\Rmath\) or \(\Cmath\).
+    If the same statement applies to both fields,
+    we call the scalar field \(F\).
+\end{convention}
+
+This convention is rather practical;
+after all, the study of topological vector spaces
+(and ``functional'' analysis)
+has started from the need in differential equations and such
+to manipulate real or complex valued functions.
+
+\begin{definition}[(Semi-)Norm]
+    \label{def:norm}
+    Let \(V\) be an \(F\)-vector space,
+    and consider the map \(p:V\to\Rmath\).
+    We call \(p\) a \define{norm} on \(V\)
+    if the following holds for any \(v,w\in V\) and \(a\in F\):
+    \begin{axioms}[Nm]
+        \item \(p(av)=\abs{a}p(v)\);
+        \hfill (Absolute homogenity)
+        \item \(p(v+w)\le p(v)+p(w)\);
+        \hfill (Subadditivity)
+        \item \(p(v)=0\) implies \(v=0\).
+    \end{axioms}
+    If we drop condition (Nm-3),
+    then we call \(p\) a \define{seminorm} on \(V\).
+\end{definition}
+
+Mathematicians claim that
+norms are the abstraction of the daily notion of ``size.''
+It \emph{commutes} with scaling,
+in other words,
+the size of the scaled object is the scaled size of the object,
+and obeys the triangle inequality.
+But it seems to miss a crucial point:
+is it really nonnegative all the time?
+
+\begin{observation}
+    \label{obv:seminorm}
+    Let \(p\) be a seminorm for an \(F\)-vector space \(V\).
+    Then the following holds:
+    \begin{alist}
+        \item \(p(0)=0\).
+        \item \(p(v)\ge 0\) for any \(v\in V\).
+    \end{alist}
+\end{observation}
+\begin{myproof}
+    \begin{alist}
+        \item By homogenity of \(p\), we have \(p(0)=0p(0)=0\).
+        \item Since \(p(-v)=\abs{-1}p(v)=p(v)\) for any \(v\in V\),
+        subadditivity of \(p\) implies
+        \[
+            0
+            =p(0)
+            \le p(v)+p(-v)
+            =2p(v);
+        \]
+        thus \(p(v)\ge 0\).
+        \rightqed
+    \end{alist}
+\end{myproof}
+
+\begin{definition}[Normed Space]
+    \label{def:nspace}
+    If an \(F\)-vector space \(V\) is given a norm \(p\),
+    we call the pair \((V,p)\) a \define[space!normed]{normed space}.
+    
+    In particular, a norm \(p\) is often denoted by double vertical bars
+    \(\denote{\norm{}{}}.\)
+    In this case, we call \((V,\norm{}{})\) a normed space.
+\end{definition}
+
+As in the case with topological or metric spaces,
+it is common practice to omit the norm
+and simply call \(V\) a normed space.
+Also, many notations for norms use double vertical bars
+and list additional information on subscripts.
+
+Some familiar examples of norms from analysis are listed below.
+
+\begin{proposition}
+    \label{prop:pnorm}
+    \begin{alist}
+        \item Consider the vector space \(F^n\).
+        Then for any \(1\le p\),
+        we define the \textdef{\(p\)-norm} on \(F^n\) by
+        \[
+            \norm{x}{p}
+            =(\abs{x^1}^p+\cdots+\abs{x^n}^p)^{1/p}.
+            \qquad
+            (x=(x^1,\dots,x^n))
+        \]
+        Note that
+        the Euclidean norm is simply the \(2\)-norm \(\norm{}{2}\),
+        while the taxicab norm is the \(1\)-norm \(\norm{}{1}\).
+        Moreover, by defining the ``\(\infty\)-norm''
+        \[
+            \norminf{x}
+            =\max_{1\le k\le n}\abs{x^k}
+            \qquad
+            (x=(x^1,\dots,x^n))
+        \]
+        we can also cover the case \(p=\infty\),
+        in the sense that
+        \(\norm{x}{p}\) converges to \(\norminf{x}\) as \(p\to\infty\).
+        
+        \item Let \(F^\infty\) be the set of finite sequences in \(F\).
+        Then for any \(1\le p\),
+        we define the \textdef{\(p\)-norm} of \(\seq{a_n}{n}\) by
+        \[
+            \norm{\seq*{a_n}{n}}{p}
+            =\biggl(\sum_{n=1}^{\infty}\abs{a_n}^p\biggr)^{1/p}.
+        \]
+        Note that \(\seq*{a_n}{n}\) is a finite sequence;
+        thus the above is still a finite sum.
+    \end{alist}
+\end{proposition}
+
+\begin{proposition}
+    \label{prop:pnormint}
+    \begin{alist}
+        \item Consider the vector space \(F^n\).
+        Then for any \(1\le p\),
+        we define the \textdef{\(p\)-norm} on \(F^n\) by
+        \[
+            \norm{x}{p}
+            =(\abs{x^1}^p+\cdots+\abs{x^n}^p)^{1/p}.
+            \qquad
+            (x=(x^1,\dots,x^n))
+        \]
+        Note that
+        the Euclidean norm is simply the \(2\)-norm \(\norm{}{2}\),
+        while the taxicab norm is the \(1\)-norm \(\norm{}{1}\).
+        Moreover, by defining the ``\(\infty\)-norm''
+        \[
+            \norminf{x}
+            =\max_{1\le k\le n}\abs{x^k}
+            \qquad
+            (x=(x^1,\dots,x^n))
+        \]
+        we can also cover the case \(p=\infty\),
+        in the sense that
+        \(\norm{x}{p}\) converges to \(\norminf{x}\) as \(p\to\infty\).
+        
+        \item Let \(F^\infty\) be the set of finite sequences in \(F\).
+        Then for any \(1\le p\),
+        we define the \textdef{\(p\)-norm} of \(\seq{a_n}{n}\) by
+        \[
+            \norm{\seq*{a_n}{n}}{p}
+            =\biggl(\sum_{n=1}^{\infty}\abs{a_n}^p\biggr)^{1/p}.
+        \]
+        Note that \(\seq*{a_n}{n}\) is a finite sequence;
+        thus the above is still a finite sum.
+    \end{alist}
+\end{proposition}
