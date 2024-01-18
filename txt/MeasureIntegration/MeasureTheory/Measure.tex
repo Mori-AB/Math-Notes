@@ -1,4 +1,37 @@
 \setsection{Measure}
 \label{sec:measure}
 
-Informally speaking, measure is an abstraction of area.
+Informally speaking, measure is an abstraction of volume.
+Volume, in turn, can be viewed as a function \(v\) which assigns
+a nonnegative value to each subspace \(E\) of some given space \(X\).
+Normally, one might impose more conditions such as:
+\begin{itemize}
+    \item Every subspace \(E\) of \(X\) must have some area.
+    \item The empty set must have volume zero.
+    \item Given disjoint \(E,F\subset X\), \(v(E\sqcup F)=v(E)+v(F)\).
+    In other words,
+    the area of the disjoint union \(E\sqcup F\) of subspaces
+    should equal the sum of each of the areas.
+    \item If \(X=\Rmath^n\),
+    then \(v\) must be invariant under rigid motion.
+\end{itemize}
+Experience from topology also suggests that
+the whole space \(X\) need not have infinite volume;
+since \(X\) might be just a subspace of some larger space \(Y\).
+
+Does there exist some function \(v\)
+which satisfies all the properties above?
+Polish mathematicians Stefan Banach and Alfred Tarski suggested that
+the answer is \emph{no}.
+Their counterexample is called the Banach-Tarski paradox,
+which is stated below.
+
+\begin{example}[Banach-Tarski Paradox]
+    \label{exm:banach-tarski}
+    Consider the unit ball \(B^3\) and its surface \(S^2\)
+    in \(\Rmath^3\).
+    Then it is possible to decompose \(B^3\)
+    into a finite number of subsets,
+    and apply only translation and rotation
+    to obtain two balls identical to \(B^3\).
+\end{example}
