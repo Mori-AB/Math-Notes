@@ -1,79 +1,80 @@
 % restate theorem
 \usepackage{thm-restate}
 
+% framed styles for important theorems
+\usepackage{framed}
+\colorlet{rulecolor}{Navy}
+\colorlet{headcolor}{Navy}
+\renewenvironment{leftbar}{%
+  \def\FrameCommand{{\color{rulecolor}\vrule width 3pt}\hspace{0.5em}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+
 % theorem styles
 \declaretheoremstyle[
-    headfont=\sffamily\bfseries,
+    headfont={\color{headcolor}\sffamily\bfseries},
     bodyfont=\normalfont,
     notefont=\sffamily\mdseries,
     notebraces={(}{)},
     headformat={\NAME\space\NUMBER.\NOTE},
-    headpunct={}
-    ]{lightthm}
+    headpunct={},
+    preheadhook=\vspace{0.5\baselineskip},
+    postfoothook=\vspace{0.5\baselineskip}
+]{lightthm}
 
 \declaretheorem[
     style=lightthm,
     name=Definition,
     refname={Definition,Definitions},
     within=section,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{definition}
 \declaretheorem[
     style=lightthm,
     name=Definition,
     refname={Definition,Definitions},
     unnumbered,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
 ]{definition*}
 \declaretheorem[
     style=lightthm,
     name=Example,
     refname={Example,Examples},
-    sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    sibling=definition
 ]{example}
 \declaretheorem[
     style=lightthm,
     name=Exercise,
     refname={Exercise,Exercises},
-    sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    sibling=definition
 ]{exercise}
 \declaretheorem[
     style=lightthm,
     name=Notation,
     refname={Notation,Notations},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{notation}
 \declaretheorem[
     style=lightthm,
     name=Caution,
     refname={Caution,Cautions},
-    sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    sibling=definition
 ]{caution}
 \declaretheorem[
     style=lightthm,
     name=Remark,
     refname={Remark,Remarks},
-    sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    sibling=definition
 ]{remark}
 \declaretheorem[
     style=lightthm,
     name=Redefinition,
     refname={Redefinition,Redefinitions},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{redefinition}
 % \declaretheorem[
 %     style=lightthm,
@@ -86,67 +87,69 @@
     name=Convention,
     refname={Convention,Conventions},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
-    postfoothook=\vspace{0.5\baselineskip}
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{convention}
 
 \declaretheoremstyle[
-    headfont=\sffamily\bfseries,
+    headfont={\color{headcolor}\sffamily\bfseries},
     bodyfont=\sffamily,
     notefont=\sffamily\bfseries,
     notebraces={(}{)},
     headformat={\NAME\space\NUMBER.\NOTE},
-    headpunct={}
-    ]{normalthm}
+    headpunct={},
+    preheadhook=\vspace{0.5\baselineskip},
+]{normalthm}
 
 \declaretheorem[
     style=normalthm,
     name=Observation,
     refname={Observation,Observations},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{observation}
 \declaretheorem[
     style=normalthm,
     name=Observation,
     refname={Observation,Observations},
     unnumbered,
-    preheadhook=\vspace{0.5\baselineskip},
 ]{observation*}
 \declaretheorem[
     style=normalthm,
     name=Proposition,
     refname={Proposition,Propositions},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
 ]{proposition}
 \declaretheorem[
     style=normalthm,
     name=Lemma,
     refname={Lemma,Lemmas},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{lemma}
 \declaretheorem[
     style=normalthm,
     name=Theorem,
     refname={Theorem,Theorems},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
 ]{theorem}
 \declaretheorem[
     style=normalthm,
     name=Corollary,
     refname={Corollary,Corollaries},
     sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
 ]{corollary}
 \declaretheorem[
     style=normalthm,
     name=Question,
     refname={Question,Questions},
-    sibling=definition,
-    preheadhook=\vspace{0.5\baselineskip},
+    sibling=definition,,
+    postheadhook=\begin{leftbar},
+    prefoothook=\end{leftbar},
     postfoothook=\vspace{0.5\baselineskip}
 ]{question}
 
@@ -166,31 +169,30 @@
     headfont=\sffamily\bfseries,
     bodyfont=\normalfont,
     qed=\qedsymbol,
-    headpunct={\::}
-    ]{proof}
+    headpunct={\::},
+    postfoothook=\vspace{0.5\baselineskip}
+]{proof}
     
 \declaretheorem[
     style=proof,
     name=Proof,
     unnumbered,
-    postfoothook=\vspace{0.5\baselineskip}
 ]{myproof}
 \declaretheorem[
     style=proof,
     name=Solution,
     unnumbered,
-    postfoothook=\vspace{0.5\baselineskip}
 ]{solution}
 \newcommand\rightqed{{\hfill\qedhere}} % place qed at right side
 
 \declaretheoremstyle[
     headfont=\sffamily\bfseries,
     notefont=\sffamily\bfseries,
-    headformat={\NOTE},
+    headformat={\NOTE}, % note becomes the title of the theorem.
     headpunct={\::},
     notebraces={\unskip}{},
     qed=\qedsymbol
-    ]{miscellaneous}
+]{miscellaneous}
 
 \declaretheorem[
     style=miscellaneous,
