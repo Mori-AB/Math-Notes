@@ -20,7 +20,7 @@
 % custom lists for axioms
 \newenvironment*{axioms}[1][A]{%
     \begin{enumerate}[
-        label=(#1-\arabic*),
+        label=(\uppercase{#1}\arabic*),
         labelindent = \parindent,
         leftmargin = *
     ]
