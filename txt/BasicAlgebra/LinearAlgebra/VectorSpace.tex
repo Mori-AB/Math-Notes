@@ -267,3 +267,30 @@ Other several remarks can be made about \cref{exm:vspfunc}.
     Note that we do not consider multiplications of matrices here;
     it is not in the definition of vector spaces.
 \end{example}
+
+\subsection[Properties]{Properties of Vector Spaces}
+\label{sbc:vspprop}
+
+So far, we have obtained several models of vector spaces,
+most of them which are just variations of \(\func{X,V}\).
+These are objects that have rather concrete definitions.
+However, there is absolutely no information
+about the abstract vector space \(V\) itself;
+it is just a set with two operations.
+What properties can we deduce about vector spaces?
+
+In order to answer this question,
+we must use the only information we know about \(V\);
+addition and scalar multiplication.
+
+\begin{definition*}[Linear Combinations]
+    \label{def:lincombi}
+    Let \(V\) be an \(F\)-vector space,
+    and \(S=\{v_1,\dots,v_n\}\) be a finite subset of \(V\).
+    A \define[linear combination]{linear combination of \(S\)}
+    is a vector of the form
+    \[
+        a^1v_1+\cdots+a^nv_n
+    \]
+    where \(a^1,\dots,a^n\) are elements of \(F\).
+\end{definition*}
