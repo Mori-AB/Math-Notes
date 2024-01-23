@@ -1,2 +1,113 @@
 \setsection{Vector Spaces}
 \label{sec:vectorspace}
+
+Recall that our first usage of matrices
+were to represent systems of linear equations.
+There, numbers with a single index were written as vectors,
+whereas numbers with double indices were written in a matrix.
+Our first objective here
+is to give an appropriate abstraction of such numbers.
+
+\begin{example}[\(\Rmath^n\) and \(\Cmath^n\)]
+    \label{exm:vspintro}
+    Note that we in fact have very limited examples of vectors:
+    \(\Rmath^n\) and \(\Cmath^n\).
+    We have established
+    --- or \emph{intuitively} know ---
+    the fact that \(\Rmath\) is a complete ordered field.
+    It is also well-known that
+    \(\Cmath\) is not an ordered field,
+    but every polynomial with complex coefficients
+    has a root in \(\Cmath\).
+
+    Which properties should we focus on?
+    Experience with \(\Cmath^n\) suggests that
+    the order relation of \(\Rmath\) is barely relevant;
+    we never really cared about ``positive'' entries of tuples.
+    Similarly, we never used completeness in the sense that
+    no Cauchy sequences were involved in our computations.
+    Thus, one can deduce that
+    the key part of matrix algebra is in the operations itself.
+    Addition and multiplication
+    --- with their companions subtraction and division ---
+    of numbers is all we need to consider.
+
+    However, it is not entirely clear whether
+    we need all the four operations.
+    For example, how can we multiply two \(n\)-tuples
+    to obtain another \(n\)-tuple?
+    On the other hand,
+    multiplying a number and an \(n\)-tuple seems relatively easy.
+\end{example}
+
+\begin{example}[Physical Units]
+    \label{exm:vspintro2}
+    One of the most basic foundation of physics is the concept of units.
+    We want to focus on the fact that
+    units abide to the usual laws of arithmetic.
+    For example, multiplying mass [kg] with velocity [m/s]
+    we obtain momentum [kg m/s].
+
+    Now consider masses \(m_1\) and \(m_2\) of two objects.
+    We can add up the two and obtain an object with mass \(m_1+m_2\).
+    Also, we can scale up the first object with resulting mass \(cm_1\).
+    However, what do we obtain by multiplying \(m_1\) and \(m_2\)?
+    We might obtain something,
+    but we can no longer call it a mass of some object.
+\end{example}
+
+The two examples show that
+to reach our current objective,
+it is best to consider addition and scalar multiplication.
+For simplicity, we want to impose some extra properties of operations.
+This results in the following definition.
+
+\begin{definition}[Vector Spaces]
+    \label{def:vectorspace}
+    Let \(F\) be a field.
+    Consider a set \(V\) and two operations
+    \(+:V\times V\to V\), \(\cdot:F\times V\to V\)
+    whose images are denoted by \(v+w\) and \(av\)
+    instead of \(+(v,w)\) and \(\cdot(a,v)\).
+    Suppose that all the following holds:
+    \begin{axioms}[Vsp]
+        \item For all \(u,v,w\) in \(V\), \((u+v)+w=u+(v+w)\);
+        \hfill\textsf{(Associativity)}
+
+        \item For all \(v,w\) in \(V\), \(v+w=w+v\);
+        \hfill\textsf{(Commutativity)}
+
+        \item There exists an element \(v_0\) in \(V\) such that
+        \(v+v_0=v\) for all \(v\) in \(V\);
+        \footnote{
+            Such an element is denoted by \(0\)
+            instead of \(v_0\).}
+        \hfill\textsf{(Additive identity)}
+
+        \item For any \(v\) in \(V\),
+        there exists an element \(\tilde v\) in \(V\) such that
+        \(v+\tilde v=0\);
+        \footnote{
+            Such an element is denoted by \(-v\)
+            instead of \(\tilde v\).}
+        \hfill\textsf{(Additive inverse)}
+
+        \item For any \(v,w\) in \(V\) and \(a\in F\),
+        \(a(v+w)=av+aw\);
+        \hfill\textsf{(Distributivity)}
+
+        \item For any \(v\) in \(V\) and \(a,b\in F\),
+        \((a+b)v=av+bv\);
+        \hfill\textsf{(Distributivity)}
+
+        \item For any \(v\) in \(V\) and \(a,b\in F\).
+        \(a(bv)=(ab)v\);
+        \hfill\textsf{(Compatibility)}
+
+        \item For any \(v\in V\), \(1v=v\);
+    \end{axioms}
+    then \(V\) is called
+    a \define[space!vector space]{vector space over \(F\)},
+    and the elements of \(V\) are called
+    \define[vector]{vectors}.
+\end{definition}
