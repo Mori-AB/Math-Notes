@@ -4,3 +4,7 @@
 {"rule":"WHITESPACE_RULE","sentence":"^\\Qaxioms[1][A]\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QStudy Notes to Mathematics Kim Jae Won 1.0.0\\E$"}
 {"rule":"ADVERB_OR_HYPHENATED_ADJECTIVE","sentence":"^\\QWe have established — or intuitively know — the fact that \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is a complete ordered field.\\E$"}
+<<<<<<< HEAD
+=======
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qis a vector of the form \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q where \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q are elements of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+>>>>>>> feat/bsc/linear
