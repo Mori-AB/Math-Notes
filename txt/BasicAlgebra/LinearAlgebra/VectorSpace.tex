@@ -21,7 +21,7 @@ is to give an appropriate abstraction of such numbers.
     has a root in \(\Cmath\).
 
     Which properties should we focus on?
-    Experience with \(\Cmath^n\) suggests that
+    Experience with \(\Cmath\) or \(\Rmath^n\) suggests that
     the order relation of \(\Rmath\) is barely relevant;
     we never really cared about ``positive'' entries of tuples.
     Similarly, we never used completeness in the sense that
@@ -64,7 +64,12 @@ This results in the following definition.
 
 \begin{definition}[Vector Spaces]
     \label{def:vectorspace}
-    Let \(F\) be a field.
+    Let \(F\) be a field.%
+    \footnote{We have not yet defined what a field is;
+    here, we consider fields as sets which behave like the real numbers
+    under addition and multiplication.
+    The most prominent examples are
+    \(\Qmath\), \(\Rmath\) and \(\Cmath\).}
     Consider a set \(V\) and two operations
     \(+:V\times V\to V\), \(\cdot:F\times V\to V\)
     whose images are denoted by \(v+w\) and \(av\)
@@ -78,18 +83,20 @@ This results in the following definition.
         \hfill\textsf{(Commutativity)}
 
         \item There exists an element \(v_0\) in \(V\) such that
-        \(v+v_0=v\) for all \(v\) in \(V\);
+        \(v+v_0=v\) for all \(v\) in \(V\);%
         \footnote{
             Such an element is denoted by \(0\)
             instead of \(v_0\).}
+
         \hfill\textsf{(Additive identity)}
 
         \item For any \(v\) in \(V\),
         there exists an element \(\tilde v\) in \(V\) such that
-        \(v+\tilde v=0\);
+        \(v+\tilde v=0\);%
         \footnote{
             Such an element is denoted by \(-v\)
             instead of \(\tilde v\).}
+
         \hfill\textsf{(Additive inverse)}
 
         \item For any \(v,w\) in \(V\) and \(a\in F\),
@@ -111,3 +118,16 @@ This results in the following definition.
     and the elements of \(V\) are called
     \define[vector]{vectors}.
 \end{definition}
+
+Having our definition of vector spaces,
+it is important to check if
+our motivating examples in \cref{exm:vspintro} fit in the above.
+
+\begin{example}[\(\Rmath^n\) and \(\Cmath^n\)]
+    \label{exm:vsintroverif}
+    Here we verify that
+    \(\Rmath^n\) and \(\Cmath^n\) satisfy the given axioms above.
+    The proof is not long,
+    since all the above axioms hold for \(\Rmath\) and \(\Cmath\).
+    For \(n>1\), we can repeat the same argument component-wise.
+\end{example}
