@@ -95,20 +95,22 @@ however, perhaps the main lines would remain quite unchanged.
     \begin{itemize}
         \item Normed Spaces and Banach Spaces
         \item Inner Product Spaces and Hilbert Spaces
-        \item \(C^\ast\)-algebra
+        \item \(C^\ast\)-algebras and Von Neumann Algebras
         \item Distribution Theory
     \end{itemize}
     \item \textdef{Measure Theory and Random Variables}
     \begin{itemize}
         \item Probability as Measures
-        \item Random Variables and Correlation
-        \item Probability Distribution, Central Limit Theorem
+        \item Random Variables and Probability Distribution
+        \item Notions of Convergence
+        \item Central Limit Theorem
     \end{itemize}
     \item \textdef{Differential Equations}
     \begin{itemize}
-        \item Ordinary, Partial, Stochastic Differential Equations
+        \item Ordinary and Partial Differential Equations
+        \item Stochastic Differential Equations
         \item Calculus of Variations
-        \item Numeric Approaches to Differential Equations
+        \item Numeric Approaches to Partial Differential Equations
     \end{itemize}
 \end{itemize}
 
@@ -128,6 +130,7 @@ without them modern mathematics would not have been this concrete.
 This is clearly represented by the number of arrows from the two topics.
 Whilst only requiring basic logic and set theory,
 they are truly the building blocks of mathematics.
+
 \begin{figure}
     \centering
     \begin{tikzpicture}
@@ -152,9 +155,12 @@ they are truly the building blocks of mathematics.
         \draw[->] (bsc.east) -- (int.west);
         \draw[->] (tpo.south east) -- (int.north west);
         \draw[->] (anl.south) -- (int.north);
-        \draw[->, dashed] (anl.south east)
-            .. controls ++ (1.2cm,-2.5cm) and ++ (0,7mm)
+        \draw[->, dashed] (anl.south west)
+            .. controls ++ (-1.2cm,-1.6cm)
             .. (cmp.north);
+        \draw[->, dashed] (anl.south east)
+            .. controls ++ (1cm,-2cm) and ++ (1cm, 2cm)
+            .. (deq.north east);
         \draw[->] (bsc.south) -- (alg.north);
         \draw[->] (tpo.south) -- (mfd.north);
         \draw[->, dashed] (cmp.south) -- (mfd.east);
@@ -170,7 +176,7 @@ they are truly the building blocks of mathematics.
             .. controls ++ (3cm,0) and ++ (-7mm,1.5cm)
             .. (tvs.north west);
         \draw[->] (int.south east)
-            .. controls ++ (7mm,-7mm) and ++ (7mm,1cm)
+        .. controls ++ (0.5cm,-1cm) and ++ (0.5cm, 1cm)
             .. (tvs.north east);
         \draw[->, dashed] (mfd.south) -- (rnd.north);
         \draw[->] (int.south)
@@ -186,3 +192,8 @@ they are truly the building blocks of mathematics.
     while dashed ones suggest ideas for the topic.}
     \label{fig:overallmap}
 \end{figure}
+
+The text might contain other interests
+such as quantum mechanics and quantum computing theory.
+They will be included in the text if necessary,
+but not in the diagram.
