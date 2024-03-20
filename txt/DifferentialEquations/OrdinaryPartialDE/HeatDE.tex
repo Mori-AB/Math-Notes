@@ -1,0 +1,135 @@
+\setsection{The Heat Equation}
+\label{sec:heat}
+
+The heat equation is a partial differential equation
+that describes the temperature of an object throughout time.
+We start with the most basic example.
+
+\begin{example}
+    \label{exm:heat}
+    Consider a thin, uniform rod of length \(l\).
+    Let \(u=u(x,t)\) denote the temperature
+    at the point \(x\in[0,l]\) and time \(t\ge 0\).
+    
+    Consider an interior point \(z\in(0,l)\) of the rod,
+    and let \(z\in[\alpha,\beta]\subset[0,1]\).
+    Then the heat energy \(Q(t)\) in the small interval is defined as
+    \[
+        Q(t)
+        =\int_{\alpha}^{\beta}c\rho u(x,t)\dd x.
+    \]
+    Also, letting \(q=q(x,t)\) be the rate of heat flow
+    towards the \(+x\) direction yields
+    \[
+        Q_t(t)
+        =-q(\beta,t)+q(\alpha,t)+\int_{\alpha}^{\beta}\phi(x,t)\dd x,
+    \]
+    where \(\phi\) denotes the rate of 
+    heat generation of our rod per volume.
+    Assuming that \(u_t\) is continuous on \([0,l]\times[0,\infty)\),
+    by the Leibniz integral rule
+    and the fundamental theorem of calculus we obtain
+    \begin{gather*}
+        c\rho\int_{\alpha}^{\beta}\ptdrv{u}{t}\dd x
+        =-q(\beta,t)+q(\alpha,t)+\int_{\alpha}^{\beta}\phi(x,t)\dd x
+        =-\int_{\alpha}^{\beta}\ptdrv{q}{x}-\phi(x,t)\dd x, \\
+        \frac{c\rho}{\beta-\alpha}
+            \int_{\alpha}^{\beta}\ptdrv{u}{t}\dd x
+        =-\frac{1}{\beta-\alpha}
+            \int_{\alpha}^{\beta}\ptdrv{q}{x}-\phi(x,t)\dd x \\
+        \intertext{and hence}
+        c\rho\eval*{\ptdrv{u}{t}}{(z,t)}
+        =-\eval*{\ptdrv{q}{x}}{(z,t)}+\phi(z,t);
+    \end{gather*}
+    where the last equation was obtained by taking the limit
+    \(\alpha,\beta\to z\).
+
+    To formulate the example as a problem for \(u\),
+    we apply Fourier's law of conduction \(q=-\kappa u_x\).
+    Thus we obtain
+    \[
+        c\rho\eval*{\ptdrv{u}{t}}{(z,t)}
+        =\kappa\eval*{\ptdrv[2]{u}{x}}{(z,t)}+\phi(z,t),
+    \]
+    or in terms of functions,
+    \begin{equation}
+        \label{eq:heat}
+        \ptdrv{u}{t}
+        =\frac{\kappa}{c\rho}\ptdrv{q}{x}+\frac{1}{c\rho}\phi.
+    \end{equation}
+\end{example}
+
+\begin{definition*}[The Heat Equation]
+    \label{def*:heat}
+    The differential equation given in \eqref{eq:heat}
+    is called the \define{heat equation} of a finite 1D case.
+    In particular, if \(\phi=0\),
+    then the equation is called to be
+    a \define[heat equation!homogeneous]{homogeneous heat equation}.
+\end{definition*}
+
+However, problems regarding differential equations
+are never complete without initial and boundary conditionns.
+There are two ways to define them.
+
+\begin{definition*}[Initial and Boundary Conditions]
+    \label{def*:IBVP}
+    First suppose that
+    the solution \(u\) for the differential equation
+    \eqref{eq:heat} satisfies \(u(x,0)=a(x)\)
+    for some known function \(a\).
+    Then \(a\) is called the \define{initial condition} of \(u\).
+
+    As for boundary values, suppose that
+    the behavior \(u(0,t)\) and \(u(l,t)\) of \(u\)
+    at the boundary of the rod are known functions \(b_0\) and \(b_1\).
+    Such a condition is called
+    the \define{Dirichlet boundary condition} of \(u\).
+    On the other hand,
+    suppose that the behavior of \(u_x\) instead of \(u\) are known,
+    i.e.
+    \[
+        -\kappa\eval*{\ptdrv{u}{x}}{(0,t)}=b_0(t),
+        \qquad
+        -\kappa\eval*{\ptdrv{u}{x}}{(l,t)}=b_1(t).
+    \]
+    Such a condition is called
+    the \define{Neumann boundary condition} of \(u\).
+\end{definition*}
+
+The formal numbered definitions will appear soon
+when we consider heat equations of higher dimensional cases.
+For now, we concentrate on the one-dimensional case.
+Let us first state our simple problem
+where \(l=1\) and \(\phi=0\).
+
+\begin{question}
+    \label{qst:homo1dheat}
+    Does there exist a continuous function \(u=u(x,t)\)
+    which satisfies
+    \begin{align}
+        \ptdrv{u}{t}&=\ptdrv[2]{u}{x},
+        && (t>0,\ 0<x<1) \\
+        u(x,0)&=a(x),
+        && (0\le x\le 1) \\
+        u(0,t)=b_0(x),
+        &\qquad
+        u(1,t)=b_1(x)?
+        && (t>0)
+    \end{align}
+    given appropriate functions \(a\), \(b_0\) and \(b_1\)?
+\end{question}
+
+However, it is hard to consider an infinite region
+(mostly because there might not exist a maximum value).
+Moreover, most applications of partial differential equations
+are interested in finding \(u(x,T)\) given some finite \(T>0\).
+To do this, consider the domains
+\[
+    Q_T=(0,1)\times(0,T]
+    \qquad\text{and}\qquad
+    \Gamma_T=\closure{Q_T}\setminus Q_T.
+\]
+In other words,
+\(Q_T\) is the region where the value of \(u\) is unknown,
+whereas \(\Gamma_T\) is the region where \(u\) is known.
