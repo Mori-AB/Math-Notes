@@ -63,8 +63,8 @@ our approach is to assign volume whenever possible.
     in other words,
     \begin{axioms}[\(\sigma\)-ALG]
         \setcounter{enumi}{3}
-        \item for any \(\indexset{A_i}{i=1}{\infty}\subset\Sigma\),
-        \(\bigcup_{k=1}^\infty A_k\in\Sigma\).
+        \item for any \(\indexset{A_n}{n=1}{\infty}\subset\Sigma\),
+        \(\bigcup_{n=1}^\infty A_n\in\Sigma\).
     \end{axioms}
 \end{definition}
 
@@ -121,7 +121,7 @@ A trivial but intuitively significant remark follows:
     a \define{measurable space}.
     In this spirit,
     we call elements of \(\Sigma\) as
-    \define[set!\(\Sigma\)-measurable]{\(\Sigma\)-measurable sets}.
+    \define[measurable set!\(\Sigma\)-]{\(\Sigma\)-measurable sets}.
 \end{definition}
 
 The name ``measurable space'' naturally suggests that
@@ -175,6 +175,19 @@ it is convenient to observe the following
         \rightqed
     \end{itemize}
 \end{myproof}
+Note that
+unions of \(\sigma\)-algebras are generally not \(\sigma\)-algebras.
+(For a quick example,
+consider \(S=\{0,1,2\}\) and its two \(\sigma\)-algebras
+\[
+    \Sigma_1=\{\varnothing,\{1\},\{2,3\},S\},
+    \quad
+    \Sigma_2=\{\varnothing,\{2\},\{1,3\},S\}.
+\]
+Then their union \(\Sigma_1\cup\Sigma_2\) does not contain \(\{1,2\}\),
+hence is not closed under set operations.)
+We already experienced this phenomenon
+for sums (or unions) of vector spaces and unions of topologies.
 
 Having proven this,
 we can define \(\sigma(\mathcal C)\) in \cref{def:gensigmaalg} as
@@ -192,13 +205,210 @@ In other words,
 if some subsets of \(S\) are needed in a measure theory-related context,
 we simply gather those subsets in \(\mathcal C\)
 and consider \(\sigma(\mathcal C)\) to make \(S\) a measurable space.
-Thus, in practice it boils down to choose the \(\sigma\)-algebra in need.
+Thus, in practice, a measure-theoretic interpretation of a situation
+boils down to choosing the appropriate \(\sigma\)-algebra on \(S\)
+which best describes the situation.
+
+In spirit of the above idea,
+we present some examples of creating \(\sigma\)-algebras
+from existing ones.
+\begin{proposition}[New \(\sigma\)-algebras form Old]
+    \label{prop:sigmaalg}
+    Let \((S,\Sigma)\) be a measurable space.
+    \begin{alist}
+        \item (Subspace \(\sigma\)-algebras)
+        Given a nonempty subset \(A\subset S\),
+        the collection \(\Sigma_A=\set{E\cap A}{E\in\Sigma}\)
+        is a \(\sigma\)-algebra on \(A\).
+        \item (Inverse images)
+        Let \(T\) be a set,
+        and \(f:T\to S\) be an arbitrary function.
+        Then the collection
+        \(\inv f(\Sigma)=\set{\inv F(E)}{E\in\Sigma}\)
+        is a \(\sigma\)-algebra on \(T\).
+    \end{alist}
+\end{proposition}
+\begin{myproof}
+    \begin{alist}
+        \item We verify the three axioms of \cref{def:sigmaalg}
+        for \(\Sigma_A\).
+        It immediately follows that \(A=S\cap A\in\Sigma_A\).
+        
+        Suppose that
+        \(E\cap A\) is in \(\Sigma_A\) for some \(E\in\Sigma\).
+        Then since \(\Sigma\) is a \(\sigma\)-algebra on \(S\),
+        \(E\compl\in\Sigma\) implies that
+        \(A\setminus(E\cap A)=A\cap E\compl\in\Sigma_A\).
+        Finally, suppose that
+        \(\indexset{A\cap E_n}{n=1}{\infty}\subset\Sigma_A\)
+        for some \(\indexset{E_n}{n=1}{\infty}\subset\Sigma\).
+        Then since
+        \[
+            A\cap\bigcup_{n=1}^\infty E_n
+            =\bigcup_{n=1}^\infty(A\cap E_n)
+        \]
+        by distributivity
+        and \(\bigcup_{n=1}^\infty E_n\in\Sigma\)
+        since \(\Sigma\) is a \(\sigma\)-algebra on \(S\),
+        we conclude that
+        \(\Sigma_A\) is closed under countable union.
+        Therefore, \(\Sigma_E\) is indeed a \(\sigma\)-algebra on \(E\).
+        
+        \item We verify the three axioms of \cref{def:sigmaalg}
+        for \(\inv f(\Sigma)\).
+        It immediately follows that \(T=\inv f(S)\in\inv f(\Sigma)\).
+        
+        Suppose that
+        \(\inv f(E)\) is in \(\inv f(\Sigma)\) for some \(E\in\Sigma\).
+        Then since \(\Sigma\) is a \(\sigma\)-algebra on \(S\),
+        \(S\setminus E\in\Sigma\) implies that
+        \(T\setminus\inv f(E)=\inv f(S\setminus E)\in\inv f(\Sigma)\).
+        Finally, suppose that
+        \(\indexset{\inv f(E_n)}{n=1}{\infty}\subset\inv f(\Sigma)\)
+        for some \(\indexset{E_n}{n=1}{\infty}\subset\Sigma\).
+        Then since
+        \[
+            \bigcup_{n=1}^\infty\inv f(E_n)
+            =\inv f\biggl(\bigcup_{n=1}^\infty E_n\biggr)
+        \]
+        and \(\bigcup_{n=1}^\infty E_n\in\Sigma\)
+        since \(\Sigma\) is a \(\sigma\)-algebra on \(S\),
+        we conclude that
+        \(\inv f(\Sigma)\) is closed under countable union.
+        Therefore,
+        \(\inv f(\Sigma)\) is indeed a \(\sigma\)-algebra on \(T\).
+        \rightqed
+    \end{alist}
+\end{myproof}
+
+\begin{example}
+    \label{exm:gensigmaalg}
+    \begin{alist}
+        \item For any subset \(E\) of \(S\),
+        the \(\sigma\)-algebra \(\sigma(E)\) generated by \(E\)
+        is precisely the set \(\{\varnothing,E,S\setminus E,S\}\).
+        \item Similarly,
+        given a finite collection \(\indexset*{E_k}{k=1}{n}\)
+        of subsets of \(S\),
+        \[
+            \sigma(\indexset*{E_k}{k=1}{n})
+            =\set{\tilde E_1\cap\dots\cap\tilde E_n}%
+                {\tilde E_i\in\sigma(E_i)}.
+        \]
+        For explicit families of sets
+        (in other words, those represented with braces),
+        then we often omit either the braces or parentheses.
+        Thus, it is also common practice to write
+        \[
+            \sigma(\indexset*{E_k}{k=1}{n})
+            =\sigma\indexset*{E_k}{k=1}{n}
+            =\sigma(E_k\given k=1,\dots,n).
+        \]
+        Moreover, if \(S\) is the disjoint union of \(E_1,\dots,E_n\),
+        then
+        \[
+            \sigma\indexset*{E_k}{k=1}{n}
+            =\set{\tilde E_1\cup\dots\cup\tilde E_n}%
+                {\tilde E_i=E_i\ \text{or}\ \varnothing}.
+        \]
+    \end{alist}
+\end{example}
+One may easily come up with similar forms for \(\sigma\)-algebras
+generated by a countable or arbitrary collection of subsets of \(S\).
+However, as we discover later,
+the moral of some parts of the theory is that
+\(\sigma\)-algebras are hard to compute or manipulate;
+thus we invent some tools to work with them later on.
 
 For topological spaces, there exists a natural \(\sigma\)-algebra.
 
-\begin{definition}
+\begin{definition}[Borel \(\sigma\)-algebras]
     \label{def:borelsig}
     Let \((S,\mathcal T)\) be a topological space.
-    Then the \(\sigma\)-algebra generated by the topology \(\mathcal T\)
-    is called the \define{Borel \(\sigma\)-algebra} on \(S\).
+    Then the \(\sigma\)-algebra \(\sigma(\mathcal T)\)
+    generated by the topology \(\mathcal T\) of \(S\)
+    is called the \define{Borel \(\sigma\)-algebra} on \(S\),
+    and its elements are said
+    to be \define[measurable set!Borel-]{Borel measurable},
+    or simply a \textdef{Borel set}.
+    If the topology in discussion is clear,
+    then we denote the Borel \(\sigma\)-algebra on \(S\)
+    by \(\denote{\borel(S)}\).
+\end{definition}
+
+Note that
+the Borel algebra \(\borel(S)\) contains a lot more information
+than the topology itself.
+By the second axiom of \cref{def:sigmaalg},
+\(\borel(S)\) also contains closed subsets of \(S\).
+Moreover, from the third axiom of \cref{def:sigmaalg}
+we observe that countable intersection of open sets
+as well as countable union of closed sets
+are also members of \(\borel(S)\),
+while they are usually not open or closed in the topological sense.
+
+But why do we care about Borel \(\sigma\)-algebras?
+One possible reason (that will later show up) is that
+since it is generated by the topology of the space,
+continuous functions from the space ``behave well''
+with respect to Borel \(\sigma\)-algebras.
+A more reasonable approach at this stage might be that
+in the usual real line, it is natural to measure
+the length of open, closed, half-open intervals;
+these are typically Borel sets.
+
+Of course, it remains to define what a length means.
+
+\begin{definition}[\(\sigma\)-additive Maps]
+    \label{def:addmap}
+    Let \(\Sigma_0\) be a set algebra for \(S\).
+    Then an extended real-valued set function
+    \(\mu_0:\Sigma_0\to[0,\infty]\)
+    is said to be \define{additive} if
+    \begin{axioms}[ADD]
+        \item \(\mu_0(\varnothing)=0\);
+        \item for disjoint \(A,B\in\Sigma_0\),
+        \(\mu_0(A\sqcup B)=\mu_0(A)+\mu_0(B)\).
+    \end{axioms}
+    Moreover, an additive map \(\mu_0:\Sigma_0\to[0,\infty]\)
+    is said
+    to be \define{\(\sigma\)-additive} (or \textdef{countably additive})
+    if
+    \begin{axioms}[ADD]
+        \setcounter{enumi}{2}
+        \item for any mutually disjoint collection
+        \(\indexset*{A_n}{n=1}{\infty}\subset\Sigma_0\)
+        such that \(\bigcup_{n=1}^\infty A_n\in\Sigma_0\),
+        \[
+            \mu_0\Bigl(\bigsqcup_{n=1}^\infty A_n\Bigr)
+            =\sum_{n=1}^{\infty}\mu_0(A_n).
+        \]
+    \end{axioms}
+\end{definition}
+
+There are some subtleties in the definition of \(\sigma\)-additive maps.
+\begin{itemize}
+    \item \Cref{def:addmap} considers \emph{algebras},
+    not \(\sigma\)-algebras;
+    thus the condition \(\bigcup_{n=1}^\infty A_n\in\Sigma_0\)
+    is required in axiom (ADD-3)
+    or otherwise the value on the left may not be defined.
+    \item It is crucial that
+    an additive map \(\mu_0\) may have \(\infty\) as its value;
+    this enables us to state flexible arguments regarding infinite sums,
+    but at the cost that one must avoid situations
+    where the expression \(\infty-\infty\) arises.
+    For example,
+    if \(\mu_0\) were to take only finite values,
+    then we would have stated that
+    (ADD-3) holds only if the series of the right converges.
+\end{itemize}
+
+It is now time for our main definition:
+\begin{definition}[Measure Spaces]
+    \label{def:measurespace}
+    Let \((S,\Sigma)\) be a measurable space.
+    If \(\mu:\Sigma\to[0,\infty]\) is a \(\sigma\)-additive map,
+    then we call \(\mu\) a \define{measure} on \((S,\Sigma)\),
+    and the triple \((S,\Sigma,\mu)\) to be a \define{measure space}.
 \end{definition}
