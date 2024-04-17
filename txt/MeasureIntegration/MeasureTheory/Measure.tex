@@ -1,0 +1,204 @@
+\setsection{Measure}
+\label{sec:measure}
+
+Informally speaking, measure is an abstraction of volume.
+Volume, in turn, can be viewed as a function \(v\) which assigns
+a nonnegative value to each subspace \(E\) of some given space \(X\).
+Normally, one might impose more conditions such as:
+\begin{itemize}
+    \item Every subspace \(E\) of \(X\) must have some area.
+    \item The empty set must have volume zero.
+    \item Given disjoint \(E,F\subset X\), \(v(E\sqcup F)=v(E)+v(F)\).
+    In other words,
+    the area of the disjoint union \(E\sqcup F\) of subspaces
+    should equal the sum of each of the areas.
+    \item If \(X=\Rmath^n\),
+    then \(v\) must be invariant under rigid motion.
+\end{itemize}
+Experience from topology also suggests that
+the whole space \(X\) need not have infinite volume;
+since \(X\) might be just a subspace of some larger space \(Y\).
+
+Does there exist some function \(v\)
+which satisfies all the properties above?
+Polish mathematicians Stefan Banach and Alfred Tarski suggested that
+the answer is \emph{no}.
+Their counterexample is called the Banach-Tarski paradox,
+which is stated below.
+
+\begin{example}[Banach-Tarski Paradox]
+    \label{exm:banach-tarski}
+    Consider the unit ball \(B^3\) and its surface \(S^2\)
+    in \(\Rmath^3\).
+    Then it is possible to decompose \(B^3\)
+    into a finite number of subsets,
+    and apply only translation and rotation
+    to obtain two balls identical to \(B^3\).
+\end{example}
+
+Hence, we need a more refined version of volume.
+It was Henri Lebesgue who laid the definitions that are used today.
+One observation from \cref{exm:banach-tarski} is that
+we cannot assign volume to all sets;
+our approach is to assign volume whenever possible.
+
+\begin{definition}[\(\sigma\)-algebras]
+    \label{def:sigmaalg}
+    Let \(S\) be a set.
+    Then \(\Sigma\subset\power{S}\) is called
+    an \define{algebra}
+    (or a \define{set algebra},
+    for contrast with algebra in abstract algebra)
+    on \(S\) if
+    \begin{axioms}[\(\sigma\)-ALG]
+        \item \(S\in\Sigma\);
+        \item \(\Sigma\) is closed under complements,
+        i.e., for any \(A\in\Sigma\),
+        its complement \(A\compl\in\Sigma\);
+        \item for any \(A,B\in\Sigma\), \(A\cup B\in\Sigma\).
+    \end{axioms}
+    Moreover, an algebra \(\Sigma\) is called
+    a \define{\(\sigma\)-algebra} on \(S\)
+    if it is closed under \emph{countable} union,
+    in other words,
+    \begin{axioms}[\(\sigma\)-ALG]
+        \setcounter{enumi}{3}
+        \item for any \(\indexset{A_i}{i=1}{\infty}\subset\Sigma\),
+        \(\bigcup_{k=1}^\infty A_k\in\Sigma\).
+    \end{axioms}
+\end{definition}
+
+Of course, there exist two kinds of trivial \(\sigma\)-algebras:
+\begin{example}
+    \label{exm:trivialsigma}
+    For any set \(S\),
+    its power set \(\power{S}\)
+    and \(\{\varnothing,S\}\) are (\(\sigma\)-) algebras on \(S\).
+\end{example}
+Here, \(\power{S}\) is the maximum (in the sense of set inclusions)
+\(\sigma\)-algebra on \(S\),
+where \(\{\varnothing,S\}\) is the minimum \(\sigma\)-algebra on \(S\).
+
+A trivial but intuitively significant remark follows:
+\begin{remark}
+    \label{rem:sigmaalg}
+    Let \(S\) be a set and \(\Sigma\) be an algebra on \(S\).
+    Then it follows directly from the axioms of \cref{def:sigmaalg} that
+    \(\varphi=S\setminus S\in\Sigma\)
+    and
+    \[
+        A\cap B
+        =(A\compl\cup B\compl)\compl
+        \in\Sigma,
+        \quad
+        A\setminus B
+        =A\cap B\compl
+        \in\Sigma
+    \]
+    hold for any \(A,B\in\Sigma\).
+    Thus, it inductively follows that
+    given any \(A_1,\dots,A_n\in\Sigma\),
+    any finite set operation on \(\indexset*{A_k}{k=1}{n}\)
+    will still yield a member of \(\Sigma\).
+    In other words,
+    \(\Sigma\) is closed under finite set operations.
+    
+    Similarly, if \(\Sigma\) is a \(\sigma\)-algebra on \(S\),
+    then for a countable family \(\indexset*{A_n}{n=1}{\infty}\)
+    \[
+        \bigcap_{n=1}^\infty A_n
+        =\Bigl(\bigcup_{n=1}^\infty A_n\compl\Bigr)\compl
+        \in\Sigma;
+    \]
+    thus \(\Sigma\) is closed under countable set operations.
+\end{remark}
+
+\begin{definition}[Measurable Spaces]
+    \label{def:mblspace}
+    Let \(S\) be a set
+    and \(\Sigma\) be a \(\sigma\)-algebra on \(S\).
+    Then the pair \((S,\Sigma)\) is called
+    a \define{measurable space}.
+    In this spirit,
+    we call elements of \(\Sigma\) as
+    \define[set!\(\Sigma\)-measurable]{\(\Sigma\)-measurable sets}.
+\end{definition}
+
+The name ``measurable space'' naturally suggests that
+the space is to be measured later;
+this is precisely what we are about to do.
+
+As with topological spaces,
+measure spaces are in principle not special at all;
+rather, they can be generated quite easily.
+
+\begin{definition}[Generated \(\sigma\)-algebras]
+    \label{def:gensigmaalg}
+    Let \(S\) be a set,
+    and \(\mathcal C\subset\power{S}\) be some collection
+    of subsets of \(S\).
+    Then \(\sigma(\mathcal C)\) is defined as
+    the smallest \(\sigma\)-algebra on \(S\)
+    which contains \(\mathcal C\) as a subset.
+\end{definition}
+
+To establish the existence of such a \(\sigma\)-algebra,
+it is convenient to observe the following
+(as for various structures from before):
+\begin{proposition}
+    \label{prop:intersectsigma}
+    Let \(S\) be a set,
+    and \(\indexset*{\Sigma_\alpha}{\alpha\in I}{}\)
+    be a collection of \(\sigma\)-algebras on \(S\).
+    Then the set
+    \[
+        \Sigma
+        =\bigcap_{\alpha\in I}\Sigma_\alpha
+    \]
+    is again a \(\sigma\)-algebra on \(S\).
+\end{proposition}
+\begin{myproof}
+    We need to verify the three axioms of \cref{def:sigmaalg}
+    for \(\Sigma\).
+    \begin{itemize}
+        \item Since \(S\in\Sigma_\alpha\) for all \(\alpha\),
+        \(S\in\Sigma\).
+
+        \item Suppose that \(A\in\Sigma_\alpha\) for all \(\alpha\).
+        Then since \(A\compl\in\Sigma_\alpha\) for all \(\alpha\),
+        \(A\compl\in\Sigma\).
+
+        \item Suppose that \(\indexset*{A_n}{n=1}{\infty}\in\Sigma\).
+        Then since the collection is in every \(\Sigma_\alpha\),
+        their union is also in \(\Sigma_\alpha\);
+        thus in \(\Sigma\).
+        \rightqed
+    \end{itemize}
+\end{myproof}
+
+Having proven this,
+we can define \(\sigma(\mathcal C)\) in \cref{def:gensigmaalg} as
+\[
+    \sigma(\mathcal C)
+    :=\bigcap_{\substack{
+        \Sigma:\ \text{\(\sigma\)-algebra on \(S\)} \\
+        \mathcal C\subset\Sigma}}\Sigma,
+\]
+where the above is a nonempty union since
+\(\power{S}\) is such a \(\sigma\)-algebra.
+Note that
+we did not impose any condition on what \(\mathcal C\) should be.
+In other words,
+if some subsets of \(S\) are needed in a measure theory-related context,
+we simply gather those subsets in \(\mathcal C\)
+and consider \(\sigma(\mathcal C)\) to make \(S\) a measurable space.
+Thus, in practice it boils down to choose the \(\sigma\)-algebra in need.
+
+For topological spaces, there exists a natural \(\sigma\)-algebra.
+
+\begin{definition}
+    \label{def:borelsig}
+    Let \((S,\mathcal T)\) be a topological space.
+    Then the \(\sigma\)-algebra generated by the topology \(\mathcal T\)
+    is called the \define{Borel \(\sigma\)-algebra} on \(S\).
+\end{definition}
